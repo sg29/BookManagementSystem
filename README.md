@@ -46,4 +46,4 @@ You are tasked with creating an intelligent book management system using Python,
 
 
 <h3>Architecture Diagram:</h3>
-![Alt text](Architecture.png?raw=true "Architecture Diagram")
+![alt text](https://github.com/sg29/BookManagementSystem/blob/main/Architecture.png?raw=true)
