@@ -88,9 +88,8 @@ You are tasked with creating an intelligent book management system using Python,
       </ul>
     <li>Book Summary service:
       <ul><li>This service will be responsible for polling Kafka brokers and track if any new book or a new version of book is published.
-        <li>The service will then build the context for LLM and send the request to Llama3.
-          <li>The response from Llama3 will be published back in another Kakfa topic. 
-          <li>The data in Kafka is then processed by Update data service and written to database.     
+        <li>The service will then build the context for LLM  (book metadata from database and book contents from S3) and send the request to Llama3.
+          <li>The response(book summary) from Llama3 will be published diectly to S3 with unique identifier of the file in a different folder.    
       </ul>
     <li>Book Review Summary service:
       <ul><li>This service will be responsible for polling Kafka brokers and track if any new review is published.
@@ -99,9 +98,9 @@ You are tasked with creating an intelligent book management system using Python,
           <li>The data in Kafka is then processed by Update data service and written to database.     
       </ul>
     <li>Book Recommendation service:
-      <ul><li>This service will be responsible for polling Kafka brokers and check if any new recommendation request is received. Batch also enabled timely.
-        <li>The service will then build the context for LLM using user's previous ratings and genres and send the request to Llama3.
-          <li>The response from Llama3 will be published back in another Kakfa topic. 
+      <ul><li>This service will be responsible for polling Kafka brokers and check if any new recommendation request is received. Batch also enabled for users every 7 days in rotation for 1/5th of the customers.
+        <li>The ML model will be triggered with user_id.
+          <li>The response from ML model will be published back in another Kakfa topic. 
           <li>The data in Kafka is then processed by Update data service and written to database.     
       </ul>
   </ul>  

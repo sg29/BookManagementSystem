@@ -1,0 +1,4 @@
+confluent_kafka
+psycopg2
+boto3
+requests
